@@ -28,12 +28,12 @@ class Fruit extends React.Component{
     let fruit_type = this.state.editable ? <input type='text' ref={input => this.fruit_type = input} defaultValue={this.props.fruit.fruit_type}/>:<p>{this.props.fruit.fruit_type}</p>
     return(
       <tr>
-         <td> {name} </td>
-         <td> {description} </td>
-         <td> {fruit_type} </td>
+         <td>{name}</td>
+         <td>{description}</td>
+         <td>{fruit_type}</td>
          <td> 
-          <button onClick={() => this.handleEdit()} className="btn btn-success btn-sm float-left">{this.state.editable? 'Submit' : 'Edit'}</button>
-          <button onClick={() => this.props.handleDelete(this.props.fruit.id)} className="btn btn-danger btn-sm float-right">Delete</button>
+          <button onClick={() => this.handleEdit()} className="btn btn-success btn-sm float-none">{this.state.editable? 'Submit' : 'Edit'}</button>
+          <button onClick={() => this.props.handleDelete(this.props.fruit.id)} className="btn btn-danger btn-sm float-none">Delete</button>
          </td>
       </tr>
     )      

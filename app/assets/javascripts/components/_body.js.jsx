@@ -24,7 +24,8 @@ class Body extends React.Component {
       body: body,
     }).then((response) => {return response.json()})
     .then((fruit)=>{
-      this.addNewFruit(fruit)
+      this.addNewFruit(fruit);
+      $('#exampleModal').modal('toggle');
     })
   }
 
@@ -62,7 +63,7 @@ class Body extends React.Component {
         'Content-Type': 'application/json'
       }
     }).then((response) => { 
-        this.updateFruit(fruit)
+        this.updateFruit(fruit);
       })
   }
   updateFruit(fruit){
