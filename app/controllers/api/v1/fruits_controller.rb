@@ -21,6 +21,6 @@ class Api::V1::FruitsController < ApplicationController
   private
 
   def fruit_params
-    params.require(:fruit).permit(:id, :name, :description)
+    params.require(:fruit).permit(:id, :name, :description, :fruit_type)
   end
 end

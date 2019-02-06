@@ -13,10 +13,10 @@ class Body extends React.Component {
     this.updateFruit = this.updateFruit.bind(this)
   }
 
-  handleFormSubmit(name, description){
-    let body = JSON.stringify({fruit: {name: name, description: description} })
+  handleFormSubmit(name, description, fruit_type){
+    let body = JSON.stringify({fruit: {name: name, description: description, fruit_type: fruit_type} })
 
-    fetch('http://localhost:3000/api/v1/fruits', {
+    fetch(`${window.location.href}api/v1/fruits`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -26,7 +26,6 @@ class Body extends React.Component {
     .then((fruit)=>{
       this.addNewFruit(fruit)
     })
-    
   }
 
   addNewFruit(fruit){
@@ -35,16 +34,16 @@ class Body extends React.Component {
     })
   }
 
-   handleDelete(id){
-    fetch(`http://localhost:3000/api/v1/fruits/${id}`, 
+  handleDelete(id){
+    fetch(`${window.location.href}api/v1/fruits/${id}`, 
     {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
       }
     }).then((response) => { 
-        this.deleteFruit(id)
-      })
+      this.deleteFruit(id)
+    })
   }
 
   deleteFruit(id){
@@ -55,7 +54,7 @@ class Body extends React.Component {
   }
 
   handleUpdate(fruit){
-    fetch(`http://localhost:3000/api/v1/fruits/${fruit.id}`, 
+    fetch(`${window.location.href}api/v1/fruits/${fruit.id}`, 
     {
       method: 'PUT',
       body: JSON.stringify({fruit: fruit}),
@@ -84,7 +83,7 @@ class Body extends React.Component {
     return(
       <div>
         <NewFruit handleFormSubmit={this.handleFormSubmit}/>
-        <AllFruits fruits={this.state.fruits} handleDelete={this.handleDelete} handleUpdate={this.handleUpdate}/>
+        <FruitTable fruits={this.state.fruits} handleDelete={this.handleDelete} handleUpdate={this.handleUpdate}/>
       </div>
     )
   }
