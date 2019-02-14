@@ -10,7 +10,7 @@ const FruitTable = (props) => {
 		    	<th scope="col">Action</th>
 	    	</tr>
     	</thead>
-		<AllFruits fruits={props.fruits} handleDelete={props.handleDelete} handleUpdate={props.handleUpdate}/>
+		<AllFruits fruits={props.fruits} handleDelete={props.handleDelete} handleEdit={props.handleEdit} handleUpdate={props.handleUpdate} handleEditUpdate={props.handleEditUpdate}/>
 		</table>
     );
 }

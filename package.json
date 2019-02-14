@@ -2,7 +2,15 @@
   "name": "fruits-app",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "3.5"
+    "@rails/webpacker": "3.5",
+    "babel-preset-react": "^6.24.1",
+    "bootstrap": "4.2.1",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.7",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "react_ujs": "^2.4.4"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"

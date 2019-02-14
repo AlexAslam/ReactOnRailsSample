@@ -1,11 +1,15 @@
-// import {React} from 'react.js'
-// var edit_fruits = require("./edit_fruits");
+import React from "react"
+import PropTypes from "prop-types"
+import NewFruit from "./NewFruit";
+import EditFruit from "./EditFruit";
+import FruitTable from "./FruitTable";
 class Body extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
       fruits: [],
+      editable: false,
       single_fruit: {}
     };
     // this.single_fruit = {};
@@ -17,7 +21,7 @@ class Body extends React.Component {
     this.updateFruit = this.updateFruit.bind(this);
     this.handleEditUpdate = this.handleEditUpdate.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
-    // this.edit_fruits = EditFruit;
+    this.renderMap = this.renderMap.bind(this);
    }
 
   handleFormSubmit(name, description, fruit_type){
@@ -55,16 +59,25 @@ class Body extends React.Component {
   }
 
   handleEdit(id){
-    newFruits = this.state.fruits.filter((fruit) => fruit.id === id)
+    var newFruits = this.state.fruits.filter((fruit) => fruit.id === id)
     // this.state.single_fruit = newFruits;
-    google = {}
-    // this.edit_fruits = this.setState({fruit:google});
+    this.setState({
+      editable: !this.state.editable,
+      single_fruit: newFruits[0] 
+    })
+    // var google = {}
     // this.edit_fruits.method(newFruits[0])
     $('#editexampleModal').modal('toggle');
   }
 
+  renderMap(){
+    return(
+        <EditFruit handleFormSubmit={this.handleFormSubmit} fruit={this.state.single_fruit} />
+      )
+  }
+
   deleteFruit(id){
-    newFruits = this.state.fruits.filter((fruit) => fruit.id !== id)
+    var newFruits = this.state.fruits.filter((fruit) => fruit.id !== id)
     this.setState({ fruits: newFruits })
   }
   
@@ -75,6 +88,7 @@ class Body extends React.Component {
     let id = fruittemp.id
     let fruitop = {id: id, name: name, description: description, fruit_type: fruit_type}
     this.handleUpdate(fruitop)
+    $('#editexampleModal').modal('toggle');
   }
 
   handleUpdate(fruit){
@@ -105,10 +119,12 @@ class Body extends React.Component {
   render(){
     return(
       <div>
-        <EditFruit handleFormSubmit={this.handleFormSubmit} />
+        <EditFruit handleEditUpdate={this.handleEditUpdate} fruit={this.state.single_fruit} />
         <NewFruit handleFormSubmit={this.handleFormSubmit} />
-        <FruitTable fruits={this.state.fruits} handleDelete={this.handleDelete} handleEdit={this.handleEdit} handleUpdate={this.handleUpdate} handleEditUpdate={this.handleEditUpdate}/>
+        <FruitTable fruits={this.state.fruits} handleDelete={this.handleDelete} handleEdit={this.handleEdit} handleUpdate={this.handleUpdate} handleEditUpdate={this.handleEditUpdate}/> 
       </div>
     )
   }
 }
+
+export default Body

@@ -1,3 +1,6 @@
+import React from "react"
+import PropTypes from "prop-types"
+import Fruit from "./Fruit"
 const AllFruits = (props) => {
 
   var fruits = props.fruits.map((fruit) => {
@@ -12,3 +15,4 @@ const AllFruits = (props) => {
       </tbody>
     )
 }
+export default AllFruits

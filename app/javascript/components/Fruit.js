@@ -1,3 +1,5 @@
+import React from "react"
+import PropTypes from "prop-types"
 class Fruit extends React.Component{
 
   constructor(props){
@@ -44,5 +46,4 @@ class Fruit extends React.Component{
     // {this.state.editable ? 'Submit' : 'Edit'}
   }
 }
-
-
+export default Fruit
